@@ -1,5 +1,6 @@
 import { PropTypes } from 'prop-types';
 import { Notification } from './Notification/Notification';
+import { StatisticsWrapper } from './Statistics.styled';
 
 export const Statistics = ({
   good,
@@ -13,19 +14,23 @@ export const Statistics = ({
   }
 
   return (
-    <div>
+    <StatisticsWrapper>
       <h2>Statistics</h2>
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
       <p>Total: {total}</p>
-      <p>Positive feedback: {positivePercentage}</p>
-    </div>
+      <p className="positive-feedback">
+        Positive feedback: {positivePercentage}
+      </p>
+    </StatisticsWrapper>
   );
 };
 
-Statistics.protoTypes = {
+Statistics.propTypes = {
   good: PropTypes.number.isRequired,
   neutral: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.string.isRequired,
 };
