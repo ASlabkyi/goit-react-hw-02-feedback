@@ -3,6 +3,8 @@ import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
 
+import { Container } from './Feedback.styled';
+
 export class Feedback extends Component {
   state = {
     good: 0,
@@ -32,19 +34,21 @@ export class Feedback extends Component {
 
   render() {
     return (
-      <Section title="Please leave feedback">
+      <Container>
+        <Section title="Please leave feedback"></Section>
         <FeedbackOptions
           options={['good', 'neutral', 'bad']}
           onLeaveFeedback={this.handleUpdate}
         ></FeedbackOptions>
         <Statistics
+          title="Statistics"
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
           total={this.countTotalFeedback()}
           positivePercentage={this.countPositiveFeedbackPercentage()}
         ></Statistics>
-      </Section>
+      </Container>
     );
   }
 }
